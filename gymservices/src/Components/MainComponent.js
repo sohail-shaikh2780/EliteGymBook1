@@ -26,7 +26,7 @@ function MainComponent() {
             <section id="panel11">
                 <div id='listing'>
                     <h1>Featured Listing</h1>
-                    <p>See & book your ground from the list of most popular grounds in your city</p>
+                    <p>See & book your Gym from the list of most popular gyms in your city</p>
                 </div>
                 <br></br>
                 <div className="panel-container">
