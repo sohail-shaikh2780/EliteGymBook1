@@ -1,55 +1,35 @@
 package com.demo.beans;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "payments")
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paymentId;
+    private Long id;
+
+    @Column(name = "amount")
     private Double amount;
-    private Date paymentDate;
-    private String paymentMethod;
-    private String status;
+
+    @Column(name = "payment_date")
+    private String paymentDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "booking_id")
-    private Booking booking;
+    @JoinColumn(name = "membership_id")
+    private Membership membership;
 
-	public Payment() {
-		super();
+	public Long getId() {
+		return id;
 	}
 
-	public Payment(Long paymentId, Double amount, Date paymentDate, String paymentMethod, String status, User user,
-			Booking booking) {
-		super();
-		this.paymentId = paymentId;
-		this.amount = amount;
-		this.paymentDate = paymentDate;
-		this.paymentMethod = paymentMethod;
-		this.status = status;
-		this.user = user;
-		this.booking = booking;
-	}
-
-	public Long getPaymentId() {
-		return paymentId;
-	}
-
-	public void setPaymentId(Long paymentId) {
-		this.paymentId = paymentId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Double getAmount() {
@@ -60,28 +40,12 @@ public class Payment {
 		this.amount = amount;
 	}
 
-	public Date getPaymentDate() {
+	public String getPaymentDate() {
 		return paymentDate;
 	}
 
-	public void setPaymentDate(Date paymentDate) {
+	public void setPaymentDate(String paymentDate) {
 		this.paymentDate = paymentDate;
-	}
-
-	public String getPaymentMethod() {
-		return paymentMethod;
-	}
-
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 	public User getUser() {
@@ -92,20 +56,13 @@ public class Payment {
 		this.user = user;
 	}
 
-	public Booking getBooking() {
-		return booking;
+	public Membership getMembership() {
+		return membership;
 	}
 
-	public void setBooking(Booking booking) {
-		this.booking = booking;
+	public void setMembership(Membership membership) {
+		this.membership = membership;
 	}
 
-	@Override
-	public String toString() {
-		return "Payment [paymentId=" + paymentId + ", amount=" + amount + ", paymentDate=" + paymentDate
-				+ ", paymentMethod=" + paymentMethod + ", status=" + status + ", user=" + user + ", booking=" + booking
-				+ "]";
-	}
 
-    
 }
