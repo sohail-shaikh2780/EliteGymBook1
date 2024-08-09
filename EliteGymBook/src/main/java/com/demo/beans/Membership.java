@@ -1,46 +1,37 @@
 package com.demo.beans;
 
+import javax.persistence.*;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 @Entity
+@Table(name = "memberships")
 public class Membership {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long membershipId;
+    private Long id;
+
     private String membershipType;
-    private Double membershipPrice;
-    private String duration;
+
+    private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "gym_id")
+    private Gym gym;
 
     @OneToMany(mappedBy = "membership")
-    private Set<User> users;
+    private Set<Booking> bookings;
 
-	public Membership() {
-		super();
+	public Long getId() {
+		return id;
 	}
 
-	public Membership(Long membershipId, String membershipType, Double membershipPrice, String duration,
-			Set<User> users) {
-		super();
-		this.membershipId = membershipId;
-		this.membershipType = membershipType;
-		this.membershipPrice = membershipPrice;
-		this.duration = duration;
-		this.users = users;
-	}
-
-	public Long getMembershipId() {
-		return membershipId;
-	}
-
-	public void setMembershipId(Long membershipId) {
-		this.membershipId = membershipId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getMembershipType() {
@@ -51,36 +42,37 @@ public class Membership {
 		this.membershipType = membershipType;
 	}
 
-	public Double getMembershipPrice() {
-		return membershipPrice;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setMembershipPrice(Double membershipPrice) {
-		this.membershipPrice = membershipPrice;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
-	public String getDuration() {
-		return duration;
+	public User getUser() {
+		return user;
 	}
 
-	public void setDuration(String duration) {
-		this.duration = duration;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public Gym getGym() {
+		return gym;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setGym(Gym gym) {
+		this.gym = gym;
 	}
 
-	@Override
-	public String toString() {
-		return "Membership [membershipId=" + membershipId + ", membershipType=" + membershipType + ", membershipPrice="
-				+ membershipPrice + ", duration=" + duration + ", users=" + users + "]";
+	public Set<Booking> getBookings() {
+		return bookings;
 	}
-    
-    
+
+	public void setBookings(Set<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
 
 }

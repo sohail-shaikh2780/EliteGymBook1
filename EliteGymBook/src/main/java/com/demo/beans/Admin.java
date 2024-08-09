@@ -8,51 +8,37 @@ import javax.persistence.Id;
 @Entity
 public class Admin {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adminId;
-    private String username;
-    private String password;
-    private String email;
-	public Admin() {
-		super();
-	}
-	public Admin(Long adminId, String username, String password, String email) {
-		super();
-		this.adminId = adminId;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-	}
+    private String adminName;
+    private String adminEmail;
+    private String adminPassword;
 	public Long getAdminId() {
 		return adminId;
 	}
 	public void setAdminId(Long adminId) {
 		this.adminId = adminId;
 	}
-	public String getUsername() {
-		return username;
+	public String getAdminName() {
+		return adminName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
 	}
-	public String getPassword() {
-		return password;
+	public String getAdminEmail() {
+		return adminEmail;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAdminEmail(String adminEmail) {
+		this.adminEmail = adminEmail;
 	}
-	public String getEmail() {
-		return email;
+	public String getAdminPassword() {
+		return adminPassword;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
 	}
-	@Override
-	public String toString() {
-		return "Admin [adminId=" + adminId + ", username=" + username + ", password=" + password + ", email=" + email
-				+ "]";
-	}
-
+    
+    
     
 }

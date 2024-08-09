@@ -1,50 +1,35 @@
 package com.demo.beans;
 
+import javax.persistence.*;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 @Entity
+@Table(name = "gyms")
 public class Gym {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long gymId;
+    private Long id;
     private String gymName;
-    private String gymLocation;
+    private String location;
+    private Boolean mostSearched;
+    private String advertisement;
+    private Boolean eatablesAvailable;
+    private Boolean proteinAvailable;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private GymOwner gymOwner;
 
     @OneToMany(mappedBy = "gym")
-    private Set<Booking> bookings;
+    private Set<Membership> memberships;
 
-	public Gym() {
-		super();
+	public Long getId() {
+		return id;
 	}
 
-	public Gym(Long gymId, String gymName, String gymLocation, GymOwner gymOwner, Set<Booking> bookings) {
-		super();
-		this.gymId = gymId;
-		this.gymName = gymName;
-		this.gymLocation = gymLocation;
-		this.gymOwner = gymOwner;
-		this.bookings = bookings;
-	}
-
-	public Long getGymId() {
-		return gymId;
-	}
-
-	public void setGymId(Long gymId) {
-		this.gymId = gymId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getGymName() {
@@ -55,12 +40,44 @@ public class Gym {
 		this.gymName = gymName;
 	}
 
-	public String getGymLocation() {
-		return gymLocation;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setGymLocation(String gymLocation) {
-		this.gymLocation = gymLocation;
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public Boolean getMostSearched() {
+		return mostSearched;
+	}
+
+	public void setMostSearched(Boolean mostSearched) {
+		this.mostSearched = mostSearched;
+	}
+
+	public String getAdvertisement() {
+		return advertisement;
+	}
+
+	public void setAdvertisement(String advertisement) {
+		this.advertisement = advertisement;
+	}
+
+	public Boolean getEatablesAvailable() {
+		return eatablesAvailable;
+	}
+
+	public void setEatablesAvailable(Boolean eatablesAvailable) {
+		this.eatablesAvailable = eatablesAvailable;
+	}
+
+	public Boolean getProteinAvailable() {
+		return proteinAvailable;
+	}
+
+	public void setProteinAvailable(Boolean proteinAvailable) {
+		this.proteinAvailable = proteinAvailable;
 	}
 
 	public GymOwner getGymOwner() {
@@ -71,20 +88,13 @@ public class Gym {
 		this.gymOwner = gymOwner;
 	}
 
-	public Set<Booking> getBookings() {
-		return bookings;
+	public Set<Membership> getMemberships() {
+		return memberships;
 	}
 
-	public void setBookings(Set<Booking> bookings) {
-		this.bookings = bookings;
-	}
-
-	@Override
-	public String toString() {
-		return "Gym [gymId=" + gymId + ", gymName=" + gymName + ", gymLocation=" + gymLocation + ", gymOwner="
-				+ gymOwner + ", bookings=" + bookings + "]";
+	public void setMemberships(Set<Membership> memberships) {
+		this.memberships = memberships;
 	}
 
     
-
 }

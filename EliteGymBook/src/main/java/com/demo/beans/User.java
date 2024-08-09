@@ -1,6 +1,5 @@
 package com.demo.beans;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,48 +7,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class User {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private String username;
-    private String password;
-    private String email;
-    private String phoneNumber;
-    private Date dateJoined;
-
-    @OneToOne
-    @JoinColumn(name = "membership_id")
-    private Membership membership;
-
+    private String userName;
+    private String userEmail;
+    private String userPassword;
+    private String userPhone;
+    
     @OneToMany(mappedBy = "user")
     private Set<Booking> bookings;
-
+    
     @OneToMany(mappedBy = "user")
     private Set<Payment> payments;
-
-	public User() {
-		super();
-	}
-
-	public User(Long userId, String username, String password, String email, String phoneNumber, Date dateJoined,
-			Membership membership, Set<Booking> bookings, Set<Payment> payments) {
-		super();
-		this.userId = userId;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.dateJoined = dateJoined;
-		this.membership = membership;
-		this.bookings = bookings;
-		this.payments = payments;
-	}
+    
+    @ManyToMany
+    @JoinTable(
+        name = "user_membership",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "membership_id")
+    )
+    private Set<Membership> memberships;
 
 	public Long getUserId() {
 		return userId;
@@ -59,52 +44,36 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getUserEmail() {
+		return userEmail;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUserPassword() {
+		return userPassword;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getUserPhone() {
+		return userPhone;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public Date getDateJoined() {
-		return dateJoined;
-	}
-
-	public void setDateJoined(Date dateJoined) {
-		this.dateJoined = dateJoined;
-	}
-
-	public Membership getMembership() {
-		return membership;
-	}
-
-	public void setMembership(Membership membership) {
-		this.membership = membership;
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
 
 	public Set<Booking> getBookings() {
@@ -123,12 +92,13 @@ public class User {
 		this.payments = payments;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", dateJoined=" + dateJoined + ", membership=" + membership
-				+ ", bookings=" + bookings + ", payments=" + payments + "]";
+	public Set<Membership> getMemberships() {
+		return memberships;
 	}
 
+	public void setMemberships(Set<Membership> memberships) {
+		this.memberships = memberships;
+	}
+    
     
 }
