@@ -48,7 +48,11 @@
     align-items: center;
   }
 
-  /*-------------------*/
+  #signup {
+    grid-column: 4/5;
+  }
+
+  /*---------grid parts end----------*/
   .logo h2 {
     font-size: 2.5rem;
     font-weight: 400;
@@ -92,6 +96,9 @@
     color: white;
     background-color: #7c0000; /* Adjust the color as needed */
 }
+.hamburger-menu {
+  display: none;
+}
 
 /* responsive css style  */
 @media (max-width: 1080px) {
@@ -103,7 +110,7 @@
     .logo,
     .menu-link ul,
     #signup {
-      height: 8rem;
+      height: 5rem;
     }
   }
 
@@ -118,8 +125,8 @@
       display: none;
     }
   
-    .logo,
-    #signup{
+    .logo
+    {
       height: 7rem;
     }
 
@@ -154,27 +161,14 @@
         transition-delay: 0.2s;
       }
 
-      #singup {
-        grid-row: 1/2;
-        grid-column: 3/5;
-        justify-items: end;
-        align-items: center;
-        transition: all 2s linear;
-      }
-    
-      #singup {
-        height: 0;
-        display: none;
-      }
-    
-      #singup {
-        height: 7rem;
+      #signup {
+        height: 5rem;
         display: flex;
-        justify-self: end;
-        align-items: center;
+          justify-self: end;
+          align-items: center;
+          margin-right: 5rem;
       }
-    
-      #singup .hamburger-menu {
+      .hamburger-menu {
         display: block;
         font-size: 2.5rem;
       }
@@ -186,19 +180,20 @@
           grid-template-columns: 1rem 2fr 1fr 1fr 1rem;
         }
       
-        .logo,
-        #signup {
+        .logo
+        {
           height: 6rem;
         }
       
         #signup {
-          height: 6rem;
-          display: none;
+          height: 5rem;
+          display: flex;
           justify-self: end;
           align-items: center;
+          margin-right: 3rem;
         }
       
-        #signup .hamburger-menu {
+        .hamburger-menu {
           display: block;
           font-size: 2.5rem;
         }
@@ -210,8 +205,8 @@
           grid-template-columns: 1rem 4fr 1fr 1fr 1rem;
         }
       
-        .logo,
-        #signup {
+        .logo
+        {
           height: 6rem;
         }
       
@@ -219,17 +214,16 @@
           font-size: 2rem;
         }
       
-        #social-media {
-          height: 6rem;
+       #signup {  
+          height: 4rem;
           display: flex;
           justify-self: end;
           align-items: center;
         }
       
-        #social-media .hamburger-menu {
+        .hamburger-menu {
           display: block;
           font-size: 2.5rem;
         }
-      
-        
       }
+    

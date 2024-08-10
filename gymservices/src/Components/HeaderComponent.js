@@ -1,6 +1,9 @@
 import React,{useState} from 'react';
 import "./header.css";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+
 // eslint-disable-next-line no-unused-vars
 //import Contact from "./Contact";
 //import { Link } from "react-router-dom";
@@ -22,7 +25,7 @@ function HeaderComponent(){
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                
-                <li><a href='#contact' target='self'>Contact</a></li>
+                <li><a href='/Contact' target='_parent'>Contact</a></li>
                 <li><a href="#login">LogIn</a></li>           
             </ul>
             </div>
