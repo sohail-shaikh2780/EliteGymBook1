@@ -227,3 +227,24 @@
         }
       }
     
+
+      .nav-link {
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        color: white;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      
+      .nav-link:hover {
+        transform-origin: left;
+        color: rgb(226, 96, 9);
+        text-decoration: underline;
+        transition: 0.5s;
+      }
+      
+      .nav-link.active {
+        color: rgb(226, 96, 9);
+        border-bottom: 2px solid rgb(226, 96, 9); /* Optional underline for active link */
+      }
+      

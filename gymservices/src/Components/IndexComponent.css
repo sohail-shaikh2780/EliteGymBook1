@@ -111,6 +111,7 @@ section{
     background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(98, 98, 98));
     padding: 50px;
     border-radius: 10px;
+    font-size: 20px;
 }
 
 #city-dropdown {
