@@ -17,8 +17,16 @@ public class Booking {
     private String className;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name = "membership_id")
     private Membership membership;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 
 	public Long getId() {
 		return id;
@@ -44,6 +52,14 @@ public class Booking {
 		this.className = className;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Membership getMembership() {
 		return membership;
 	}
@@ -52,5 +68,13 @@ public class Booking {
 		this.membership = membership;
 	}
 
+	public Payment getPayment() {
+		return payment;
+	}
 
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
+    
 }
