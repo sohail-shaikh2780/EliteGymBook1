@@ -1,6 +1,7 @@
 package com.demo.beans;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "payments")
@@ -10,19 +11,14 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "amount")
-    private Double amount;
-
     @Column(name = "payment_date")
     private String paymentDate;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "amount")
+    private Double amount;
 
-    @ManyToOne
-    @JoinColumn(name = "membership_id")
-    private Membership membership;
+    @OneToMany(mappedBy = "payment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Booking> bookings;
 
 	public Long getId() {
 		return id;
@@ -30,14 +26,6 @@ public class Payment {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Double amount) {
-		this.amount = amount;
 	}
 
 	public String getPaymentDate() {
@@ -48,21 +36,21 @@ public class Payment {
 		this.paymentDate = paymentDate;
 	}
 
-	public User getUser() {
-		return user;
+	public Double getAmount() {
+		return amount;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
-	public Membership getMembership() {
-		return membership;
+	public Set<Booking> getBookings() {
+		return bookings;
 	}
 
-	public void setMembership(Membership membership) {
-		this.membership = membership;
+	public void setBookings(Set<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
-
+    
 }

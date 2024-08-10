@@ -1,47 +1,37 @@
 package com.demo.beans;
 
+import javax.persistence.*;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
 @Entity
+@Table(name = "users")
 public class User {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    private String userName;
-    private String userEmail;
-    private String userPassword;
-    private String userPhone;
-    
-    @OneToMany(mappedBy = "user")
-    private Set<Booking> bookings;
-    
-    @OneToMany(mappedBy = "user")
-    private Set<Payment> payments;
-    
-    @ManyToMany
-    @JoinTable(
-        name = "user_membership",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "membership_id")
-    )
-    private Set<Membership> memberships;
+    private Long id;
 
-	public Long getUserId() {
-		return userId;
+    @Column(name = "user_name")
+    private String userName;
+
+    @Column(name = "user_email")
+    private String userEmail;
+
+    @Column(name = "user_password")
+    private String userPassword;
+
+    @Column(name = "rating")
+    private Integer rating;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Booking> bookings;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getUserName() {
@@ -68,12 +58,12 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-	public String getUserPhone() {
-		return userPhone;
+	public Integer getRating() {
+		return rating;
 	}
 
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 
 	public Set<Booking> getBookings() {
@@ -84,21 +74,5 @@ public class User {
 		this.bookings = bookings;
 	}
 
-	public Set<Payment> getPayments() {
-		return payments;
-	}
 
-	public void setPayments(Set<Payment> payments) {
-		this.payments = payments;
-	}
-
-	public Set<Membership> getMemberships() {
-		return memberships;
-	}
-
-	public void setMemberships(Set<Membership> memberships) {
-		this.memberships = memberships;
-	}
-    
-    
 }

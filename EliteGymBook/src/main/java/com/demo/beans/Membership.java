@@ -11,19 +11,17 @@ public class Membership {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "membership_type")
     private String membershipType;
 
+    @Column(name = "price")
     private Double price;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     @ManyToOne
     @JoinColumn(name = "gym_id")
     private Gym gym;
 
-    @OneToMany(mappedBy = "membership")
+    @OneToMany(mappedBy = "membership", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Booking> bookings;
 
 	public Long getId() {
@@ -50,14 +48,6 @@ public class Membership {
 		this.price = price;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public Gym getGym() {
 		return gym;
 	}
@@ -74,5 +64,5 @@ public class Membership {
 		this.bookings = bookings;
 	}
 
-
+    
 }
