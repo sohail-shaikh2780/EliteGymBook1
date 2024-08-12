@@ -72,23 +72,15 @@ section{
 
 #home{
     background: url('3d-gym-equipment.jpg') no-repeat center center/cover;
-    color: rgb(243, 235, 235);
+    color: white;
     text-align: center;
     padding: 200px;
     margin-top: 70px;
 }
 
 #home h1{
-    font-size: 8rem;  
-    background: -webkit-linear-gradient(#eee, rgb(226, 96, 9));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-#home p{
-    font-size: 2rem;
-    background: -webkit-linear-gradient(#eee, rgb(226, 96, 9));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 3em;
+    
 }
 
 #about {
@@ -143,7 +135,7 @@ section{
 }
 
 #search-button:hover {
-    background-color: rgb(231, 161, 114);
+    background-color: #e1e1e1;
 }
 
 #aboutdiv h2 {

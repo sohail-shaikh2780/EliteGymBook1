@@ -1,24 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Gymno4 from './Gymno4.jpg';
 import Gymno5 from './Gymno5.jpg';
 import Gymno6 from './Gymno6.jpg';
 
 function MainComponent() {
-
-    const [city, setCity] = useState('');
-  const navigate = useNavigate();
-
-  const handleCityChange = (e) => {
-    setCity(e.target.value);
-  };
-
-  const handleNavigate = () => {
-    if (city) {
-      navigate(`/${city.toLowerCase()}`);
-    }
-};
 
 
     return (
@@ -26,16 +11,16 @@ function MainComponent() {
             <section id="home">
                 <h1>Welcome to EliteGymBook</h1>
                 <p>Your fitness journey starts here. Search your Gym and transform your life!</p>
-                <div className='search-container'>
-                    <select id='city-dropdown' value={city} onChange={handleCityChange}>
-                    <option value="" disabled>Select City</option>
-                    <option value="Pimpri">Pimpri</option>
-                    <option value="Baner">Baner</option>
-                    <option value="Wakad">Wakad</option>
-            </select>
-                    <button  id='search-button' onClick={handleNavigate}>Search</button>
+                <div class="search-container">
+                    <select id="city-dropdown">
+                        <option value="" disabled selected>Select your city</option>
+                        <option value="pimpri">Pimpri</option>
+                        <option value="wakad">Wakad</option>
+                        <option value="baner">Baner</option>
+                        <option value="kothrud">Kothrud</option>
+                    </select>
+                    <button id="search-button">Search</button>
                 </div>
-                
             </section>
 
             <section id="panel11">
